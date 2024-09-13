@@ -1,0 +1,800 @@
+/*///////////////-- الهيدر الاعلى --///////////////*/
+
+header {
+  background-color: #ffffff;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 250px;
+}
+
+/*///////////////-- الهيدر السفلي --///////////////*/
+
+.secondary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 244px;
+  box-shadow: 0 0.5px 2px rgb(36, 36, 36); /* إضافة الظل */
+}
+
+.left-section, .center-section, .right-section, .logo-section {
+  display: flex;
+  align-items: center;
+}
+
+
+/*////////////////-- تغيير حجم اللوجو --/////////////////*/
+
+.logo-section {
+  margin-top: 1px;    /* تحريك الشعار للأسفل */
+  margin-bottom: 0px; /* تحريك الشعار للأعلى */
+  margin-left: 50px;   /* تحريك الشعار لليمين */
+  margin-right: 5px;  /* تحريك الشعار لليسار */
+  position: relative;  /* يسمح بالتحكم في موقع الشعار داخل الحاوية */
+}
+
+.logo-section img {
+  width: 155px; /* عرض الشعار */
+  height: auto; /* جعل الارتفاع تلقائيًا للمحافظة على نسبة الأبعاد */
+  max-height: 147px; /* الحد الأقصى للارتفاع */
+}
+
+
+
+/*////////////////-- القوائم --/////////////////*/
+
+.menu {
+  display: flex; /* عرض العناصر باستخدام Flexbox */
+  list-style: none; /* إزالة النقاط من القائمة */
+  padding: 0; /* إزالة المسافة الداخلية */
+  margin: 0; /* إزالة المسافة الخارجية */
+}
+
+.menu li {
+  margin: 0 12px; /* مسافة خارجية بين العناصر */
+  position: relative; /* وضع العناصر بشكل نسبي */
+}
+
+.menu li:not(:first-child)::before {
+  content: '|'; /* استخدام رمز العمود كفاصل بين العناصر */
+  position: absolute; /* وضع العمود بشكل مطلق */
+  left: -15px; /* ضبط المسافة بين العمود والعنصر السابق */
+  color: #575757; /* لون العمود في الوضع الفاتح */
+}
+
+.menu a {
+  text-decoration: none; /* إزالة التسطير تحت النص */
+  color: #575757; /* لون النص في الوضع الفاتح */
+  font-weight: bold; /* جعل النص عريض */
+  position: relative; /* وضع العناصر بشكل نسبي */
+  display: inline-block; /* عرض العناصر في نفس السطر */
+}
+
+.menu a:hover {
+  color: rgb(161, 160, 160); /* تغيير لون النص عند التمرير */
+}
+
+.menu a {
+  position: relative; /* تفعيل الموضع النسبي للنص */
+}
+
+.menu a::after {
+  content: ''; /* إضافة خط أسفل النص */
+  display: block; /* عرض الخط ككتلة */
+  height: 2px; /* ارتفاع الخط */
+  width: 100%; /* عرض الخط */
+  background: #d22; /* لون الخط تحت النص */
+  transition: width 0.5s ease; /* تأثير الانتقال لعرض الخط */
+  
+
+  /* التحكم في المسافات بدون دفع النص */
+  transform: translateY(5px); /* تحريك الخط عموديًا بدون التأثير على النص */
+}
+
+
+.menu a:hover::after {
+  width: 100%; /* جعل عرض الخط 100% عند التمرير */
+}
+
+/* الوضع المظلم */
+[data-theme='dark'] .menu a {
+  color: #ffffff; /* لون النص في الوضع المظلم */
+}
+
+[data-theme='dark'] .menu a:hover {
+  color: rgb(200, 200, 200); /* لون النص عند التمرير في الوضع المظلم */
+}
+
+[data-theme='dark'] .menu a::after {
+  background: #ffffff; /* لون الخط تحت النص في الوضع المظلم */
+}
+
+[data-theme='dark'] .menu li:not(:first-child)::before {
+  color: #ffffff; /* لون العمود في الوضع المظلم */
+}
+
+/* شريط البحث */
+
+.search-bar {
+  display: flex; /* عرض العناصر باستخدام Flexbox */
+  align-items: center; /* محاذاة العناصر عموديًا */
+  position: relative; /* وضع العناصر بشكل نسبي */
+  width: 200px; /* عرض شريط البحث المعدل */
+  background-color: #00000054; /* لون خلفية افتراضي */
+  border-radius: 30px; /* جعل زوايا شريط البحث بيضوية */
+  transition: background-color 0.3s ease; /* تأثير الانتقال لتغيير اللون */
+}
+
+.search-input {
+  width: 100%; /* عرض شريط البحث بالكامل */
+  padding: 12px 20px 15px 0px; /* مسافة داخلية مع مسافة خاصة لأيقونة المكبر */
+  border-radius: 30px; /* جعل زوايا شريط البحث بيضوية */
+  outline: none; /* إزالة إطار التركيز الافتراضي */
+  font-size: 12px; /* حجم خط النص المعدل */
+  text-align: center; /* محاذاة النص في وسط شريط البحث أفقيًا */
+  line-height: 1.5; /* تعديل المسافة العمودية لجعل النص في وسط شريط البحث عموديًا */
+  border: none; /* إزالة الحدود */
+  background-color: rgb(255, 255, 255);
+  box-shadow: inset 0px -3px 2px rgb(0, 0, 0, 0.9);
+}
+
+
+.search-button {
+  position: absolute;
+  right: 4px; /* جعل أيقونة المكبر على الجهة اليمنى */
+  top: 48%;
+  transform: translateY(-50%);
+  background-color: #000000;
+  color: #fff;
+  border: none;
+  border-radius: 100%;
+  padding: 5.7%;
+  cursor: pointer;
+}
+
+
+/*///////////////-- technical support --////////////////*/
+
+/* الشعار */
+.tagline {
+  flex: 1; /* توسيع العنصر لملء المساحة المتبقية */
+  text-align: center; /* محاذاة النص في المنتصف */
+}
+
+/* دعم فني */
+.technical-support {
+  display: flex; /* عرض العناصر باستخدام Flexbox */
+  align-items: center; /* محاذاة العناصر عموديًا */
+}
+
+.support-button {
+  background-color: #ffffff; /* لون خلفية الزر */
+  color: #000000; /* لون النص */
+  border: none; /* إزالة إطار الزر */
+  padding: 10px 18px; /* مسافة داخلية حول الزر */
+  border-radius: 20px; /* جعل زوايا الزر بيضوية */
+  display: flex; /* عرض العناصر باستخدام Flexbox */
+  align-items: center; /* محاذاة العناصر عموديًا */
+  cursor: pointer; /* تغيير المؤشر عند التمرير */
+  box-shadow: inset 0px -3px 2px rgba(0, 0, 0, 0.9); /* ظل داخلي على جميع الحواف */
+}
+
+
+.support-button i {
+  margin-right: 10px; /* مسافة بين الأيقونة والنص */
+  font-size: 20px; /* حجم الأيقونة */
+}
+
+
+/* أنماط السلايدر */
+.slider-container {
+  position: relative; /* وضع السلايدر بشكل نسبي */
+  width: 100%; /* عرض السلايدر بالكامل */
+  overflow: hidden; /* إخفاء المحتوى الزائد */
+  height: 700px; /* ارتفاع السلايدر */
+  margin: 0px 0; /* مسافة خارجية */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5); /* إضافة ظل أسود في الأسفل */
+  background-color: #fff; /* التأكد من أن الخلفية بيضاء لتوضيح الظل بشكل أفضل */
+}
+
+.slider {
+  display: flex; /* عرض العناصر باستخدام Flexbox */
+  width: 100%; /* عرض السلايدر بالكامل */
+  height: 100%; /* ارتفاع السلايدر */
+  transition: transform 0.5s ease; /* تأثير الانتقال عند تغيير التحويل */
+}
+
+.slide {
+  width: 100%; /* عرض كل شريحة بالكامل */
+  flex-shrink: 0; /* منع انكماش الشريحة */
+}
+
+.slide img {
+  width: 100%; /* عرض الصورة بالكامل */
+  height: 100%; /* ارتفاع الصورة بالكامل */
+  object-fit: cover; /* تغطية الصورة ضمن الإطار */
+}
+
+
+/*//////////////////-- أنماط أزرار التنقل --//////////////////*/
+
+
+.slider-container .prev, .slider-container .next {
+  position: absolute; /* وضع الأزرار بشكل مطلق */
+  top: 50%; /* وضع الأزرار في منتصف الارتفاع */
+  transform: translateY(-50%); /* محاذاة الأزرار بشكل عمودي */
+  background-color: rgba(0, 0, 0, 0.5); /* لون خلفية الأزرار */
+  color: white; /* لون النص */
+  border: none; /* إزالة إطار الأزرار */
+  padding: 10px; /* مسافة داخلية حول الأزرار */
+  cursor: pointer; /* تغيير المؤشر إلى شكل اليد عند المرور فوق الأزرار */
+  z-index: 2; /* تعيين z-index لضمان ظهور الأزرار فوق السلايدر */
+}
+
+.slider-container .prev {
+  left: 10px; /* وضع الزر الأيسر على الجهة اليسرى */
+}
+
+.slider-container .next {
+  right: 10px; /* وضع الزر الأيمن على الجهة اليمنى */
+}
+
+.slider-container .prev:hover, .slider-container .next:hover {
+  background-color: rgba(0, 0, 0, 0.8); /* تغيير لون خلفية الأزرار عند التمرير */
+}
+
+/* شريط التقدم */
+.progress-bar {
+  position: absolute; /* وضع شريط التقدم بشكل مطلق */
+  bottom: 3px; /* وضع شريط التقدم في الأسفل */
+  left: 50%; /* وضع شريط التقدم في المنتصف */
+  transform: translateX(-50%); /* محاذاة شريط التقدم بشكل أفقي */
+  width: 50%; /* عرض شريط التقدم */
+  height: 3px; /* ارتفاع شريط التقدم */
+  background-color: rgba(255, 255, 255, 0.3); /* خلفية رمادية خفيفة */
+  border-radius: 2px; /* جعل زوايا شريط التقدم بيضوية */
+  overflow: hidden; /* إخفاء أي محتوى زائد */
+  z-index: 1; /* تعيين z-index أقل من المؤشر الأصفر */
+}
+
+/* تقدم الشريط */
+.progress {
+  height: 100%; /* ارتفاع الشريط التقدمي */
+  width: 0%; /* عرض الشريط التقدمي، يبدأ من الصفر */
+  background-color: #000000; /* لون الشريط الأسود */
+  transition: width 0.5s ease; /* تأثير الانتقال عند تغيير العرض */
+  position: relative; /* وضع الشريط بشكل نسبي */
+  z-index: 1; /* تعيين z-index أقل من المؤشر الأصفر */
+}
+
+/* المؤشر */
+.progress-indicator {
+  position: absolute; /* وضع المؤشر بشكل مطلق */
+  top: -6px; /* وضع المؤشر فوق الشريط */
+  width: 20px; /* عرض المؤشر */
+  height: 12px; /* ارتفاع المؤشر */
+  background-color: #ffee00; /* لون المؤشر الأصفر */
+  border-radius: 50%; /* جعل المؤشر دائري */
+  transition: left 0.5s ease; /* تأثير الانتقال عند تغيير الموضع */
+  left: 0; /* وضع المؤشر في الجهة اليسرى */
+  z-index: 2; /* تعيين z-index أعلى من الشريط الأسود */
+}
+
+
+/* إضافة تغليف للنص لجعل التنسيق أسهل */
+
+.text-wrapper {
+  text-align: center; /* توسيط المحتوى */
+  width: 100%; /* عرض 100% ليتناسب مع عرض الشاشة */
+}
+
+.info-text {
+  font-weight: bolder; /* جعل الخط عريضاً أكثر */
+  font-size: 25px; /* حجم الخط، يمكنك تعديله حسب الحاجة */
+  display: inline-block; /* جعل العنصر بمقاس النص فقط */
+  position: relative; /* لتحديد موضع الخط الأحمر تحت السطر */
+  margin: 50px 0; /* زيادة المسافة بين النص والـ sliders */
+}
+
+.info-text {
+  position: relative; /* يسمح بتموضع العناصر الوهمية بالنسبة للنص */
+  display: inline-block; /* يسمح للنص بأخذ العرض المناسب ويمنع الخطوط من التمدد خارج النص */
+}
+
+.info-text::before {
+  content: ""; /* إنشاء عنصر وهمي للخط الرمادي */
+  display: block; /* جعله كتلة */
+  width: 100%; /* عرض الخط الرمادي يساوي عرض النص */
+  height: 2px; /* سمك الخط الرمادي */
+  background-color: #ccc; /* لون الخط الرمادي الفاتح */
+  position: absolute; /* تحديد موضع الخط الرمادي */
+  bottom: -8px; /* المسافة بين النص والخط الرمادي */
+  left: 0; /* محاذاة الخط الرمادي مع بداية النص */
+  transform: scaleX(1.5); /* توسيع الخط الرمادي ليكون أطول من النص */
+  transform-origin: center; /* تعيين نقطة الأصل في منتصف العنصر لتوسيع الخط بالتساوي من الجانبين */
+  z-index: 0; /* تحديد الترتيب ليكون خلف الخط الأحمر */
+}
+
+.info-text::after {
+  content: ""; /* إنشاء عنصر وهمي للخط الأحمر */
+  display: block; /* جعله كتلة */
+  width: 100%; /* عرض العنصر يساوي عرض النص */
+  height: 2px; /* سمك الخط الأحمر */
+  background-color: rgb(255, 0, 0); /* لون الخط الأحمر */
+  position: absolute; /* تحديد موضع الخط الأحمر */
+  bottom: -8px; /* المسافة بين النص والخط الأحمر */
+  left: 0; /* محاذاة الخط الأحمر مع بداية النص */
+  z-index: 1; /* تحديد الترتيب ليكون فوق الخط الرمادي */
+}
+
+
+
+/* صورة خلفية الموقع */
+body {
+  margin: 0; /* إزالة المسافات الفارغة حول الصفحة */
+  padding: 0; /* إزالة المسافات الداخلية */
+  font-family: Arial, sans-serif; /* تعيين خط النص */
+  background-image: url('img/background-set/beau-cliche-du-celebre-amphitheatre-du-colisee-romain-sous-ciel-couper-souffle-au-lever-du-soleil.jpg'); /* تعيين صورة الخلفية للموقع */
+  background-size: cover; /* جعل صورة الخلفية تغطي كامل الصفحة */
+  background-position: center; /* وضع صورة الخلفية في مركز الصفحة */
+  background-attachment: fixed; /* تثبيت صورة الخلفية عند التمرير */
+}
+
+/* إضافة الخلفية البيضاء للمحتوى */
+.header, .slider-container, .wrapper, .text-wrapper {
+  background-color: rgb(255, 255, 255); /* تعيين خلفية بيضاء مع شفافية */
+  padding: 0px; /* إزالة الحشو الداخلي */
+  border-radius: 0px; /* إزالة استدارة الزوايا */
+  margin: 0px; /* إزالة المسافة الخارجية بين العناصر */
+}
+
+/* خلفية دائرية بيضاء وسهم للرجوع للأعلى */
+.scroll-container {
+  position: fixed; /* تثبيت العنصر في مكانه حتى عند التمرير */
+  bottom: 20px; /* وضعه بالقرب من أسفل الصفحة */
+  right: 20px; /* وضعه بالقرب من يمين الصفحة */
+  display: flex; /* استخدام Flexbox لترتيب العناصر داخله */
+  flex-direction: column; /* ترتيب العناصر عموديًا */
+  align-items: center; /* محاذاة العناصر في المنتصف بشكل عمودي */
+}
+
+
+
+/* شريط التحرك مع تأثير الحركة */
+.scroll-container {
+  position: fixed; /* تثبيت العنصر في مكانه حتى عند التمرير */
+  bottom: 20px; /* وضعه بالقرب من أسفل الصفحة */
+  right: 20px; /* وضعه بالقرب من يمين الصفحة */
+  z-index: 1000; /* جعل العنصر يظهر فوق العناصر الأخرى */
+}
+
+.scroll-to-top {
+  position: relative; /* تحديد موضع العنصر بشكل نسبي */
+  display: flex; /* استخدام Flexbox لترتيب العناصر داخله */
+  align-items: center; /* محاذاة العناصر في المنتصف بشكل عمودي */
+  justify-content: center; /* محاذاة العناصر في المنتصف بشكل أفقي */
+}
+
+.scroll-btn {
+  display: flex; /* استخدام Flexbox لترتيب العناصر داخله */
+  align-items: center; /* محاذاة العناصر في المنتصف بشكل عمودي */
+  justify-content: center; /* محاذاة العناصر في المنتصف بشكل أفقي */
+  width: 50px; /* عرض الزر */
+  height: 50px; /* ارتفاع الزر */
+  background-color: #fff; /* لون خلفية الزر */
+  border: 2px solid #000; /* تعيين حد أسود حول الزر */
+  border-radius: 50%; /* جعل الزر دائري الشكل */
+  color: #000; /* لون النص داخل الزر */
+  text-align: center; /* محاذاة النص في المنتصف */
+  line-height: 50px; /* تعيين ارتفاع السطر لتوسيط النص عموديًا */
+  font-size: 24px; /* تعيين حجم النص */
+  cursor: pointer; /* تغيير شكل المؤشر عند التمرير فوق الزر */
+  position: relative; /* تحديد موضع العنصر بشكل نسبي */
+  z-index: 1; /* جعل العنصر يظهر فوق العناصر الأخرى */
+  transition: background-color 0.3s; /* إضافة تأثير الانتقال عند تغيير لون الخلفية */
+}
+
+.scroll-btn:hover {
+  background-color: #000; /* تغيير لون خلفية الزر عند التمرير عليه */
+  color: #fff; /* تغيير لون النص عند التمرير على الزر */
+}
+
+.scroll-ring {
+  position: absolute; /* تحديد موضع العنصر بشكل مطلق */
+  top: 0; /* وضع العنصر في أعلى الزر */
+  left: 0; /* وضع العنصر في يسار الزر */
+  width: 100%; /* تعيين عرض العنصر ليملأ الزر بالكامل */
+  height: 100%; /* تعيين ارتفاع العنصر ليملأ الزر بالكامل */
+  border: 2px solid #000; /* تعيين حد أسود حول الزر */
+  border-radius: 50%; /* جعل العنصر دائري الشكل */
+  box-sizing: border-box; /* تضمين الحواف والحدود في الحجم الكلي للعنصر */
+  transition: transform 0.3s; /* إضافة تأثير الانتقال عند تغيير الحجم */
+}
+
+/* وضع المظلم - شريط التحرك */
+.dark-mode .scroll-ring {
+  border-color: #fff; /* تغيير لون الحد إلى الأبيض في الوضع المظلم */
+}
+
+/* خلفية دائرية وسهم الرجوع للأعلى */
+.scroll-to-top {
+  position: relative; /* تحديد موضع العنصر بشكل نسبي */
+  width: 60px; /* عرض العنصر */
+  height: 60px; /* ارتفاع العنصر */
+  background-color: #fff; /* تعيين لون الخلفية للعنصر */
+  border-radius: 50%; /* جعل العنصر دائري الشكل */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* إضافة ظل خفيف حول العنصر */
+  display: flex; /* استخدام Flexbox لترتيب العناصر داخله */
+  align-items: center; /* محاذاة العناصر في المنتصف بشكل عمودي */
+  justify-content: center; /* محاذاة العناصر في المنتصف بشكل أفقي */
+  overflow: hidden; /* إخفاء أي محتوى يتجاوز حدود العنصر */
+  z-index: 1000; /* جعل العنصر يظهر فوق العناصر الأخرى */
+}
+
+/* الشريط الأسود الذي يحيط بالزر */
+.scroll-ring {
+  position: absolute; /* تحديد موضع العنصر بشكل مطلق */
+  top: 0; /* وضع العنصر في أعلى الزر */
+  left: 0; /* وضع العنصر في يسار الزر */
+  width: 100%; /* تعيين عرض العنصر ليملأ الزر بالكامل */
+  height: 100%; /* تعيين ارتفاع العنصر ليملأ الزر بالكامل */
+  border: 2px solid #000; /* تعيين حد أسود حول الزر */
+  border-radius: 50%; /* جعل العنصر دائري الشكل */
+  box-sizing: border-box; /* تضمين الحواف والحدود في الحجم الكلي للعنصر */
+  transform: scale(0); /* تقليص حجم العنصر إلى صفر عند البداية */
+  transition: transform 0.3s ease; /* إضافة تأثير الانتقال عند تغيير الحجم */
+}
+
+/* سهم الرجوع للأعلى */
+.scroll-btn {
+  text-decoration: none; /* إزالة التسطير من النص */
+  color: #000000; /* تعيين لون النص */
+  font-size: 24px; /* تعيين حجم النص */
+  z-index: 1; /* جعل العنصر يظهر فوق العناصر الأخرى */
+}
+
+
+
+/*///////////////////-- سلة المشتريات --///////////////////*/
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* يضيف مسافة متساوية بين العناصر داخل الحاوية */
+}
+
+.cart {
+  position: relative;
+  margin-right: 0px; /* يمكنك تعديل المسافة هنا لمحاذاة العنصر كما تريد */
+  margin-left: 0px; /* يمكنك تعديل المسافة هنا لمحاذاة العنصر كما تريد */
+  margin-top: 1px; /* يمكنك تعديل المسافة هنا لمحاذاة العنصر كما تريد */
+  margin-bottom: 105px; /* يمكنك تعديل المسافة هنا لمحاذاة العنصر كما تريد */
+  width: 32px; /* عرض الخلفية الدائرية */
+  height: 32px; /* ارتفاع الخلفية الدائرية */
+  background-color: #ffffff; /* لون الخلفية */
+  border-radius: 50%; /* يجعل الخلفية دائرية */
+  display: flex; /* يستخدم Flexbox لمركزة الأيقونة داخل الدائرة */
+  align-items: center; /* محاذاة عمودية للأيقونة */
+  justify-content: center; /* محاذاة أفقية للأيقونة */
+  box-shadow: inset 0px -2px 3px rgba(0, 0, 0, 0.9); /* ظل داخلي باللون الأسود */
+
+}
+
+.cart i {
+  font-size: 20px;
+  color: #000000;
+  cursor: pointer;
+}
+
+
+
+/*//////////////////////-- ايقونة عدد المنتجات --///////////////////*/
+
+.cart-badge {
+  position: absolute;
+  top: -3px; /* تعديل المحاذاة العلوية */
+  right: -3px; /* تعديل المحاذاة اليمنى */
+  background-color: red;
+  color: rgb(255, 255, 255);
+  border-radius: 50%;
+  padding: 0px 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+/*//////////////////////-- خانة تغيير العملة --///////////////////*/
+
+.currency-selector {
+  position: relative; /* يجعل العنصر بوضع نسبي */
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  padding: 4px 20px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: inset 0px -2px 3px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  margin-top: 0px;
+  margin-bottom: 103px;
+  color: #000000;
+  z-index: 1000; /* التأكد من أن الخانة ليست أعلى من العمود الفاصل */
+}
+
+
+/*///////////////-- تغيير اتجاهات الخط والحجم --/////////////////*/
+.currency {
+  font-size: 14px; /* حجم الخط */
+  
+  /* مسافات (يمين، يسار، أعلى، أسفل) */
+  margin-top: 10px;    /* المسافة العلوية */
+  margin-bottom: 10px; /* المسافة السفلية */
+  margin-right: 1px;   /* المسافة اليمنى */
+  margin-left: 1px;    /* المسافة اليسرى */
+  
+  /* التحكم في اتجاه النص */
+  text-align: right; /* محاذاة النص لليمين */
+}
+
+
+/* عند التأشير على العنصر */
+.currency-selector:hover {
+  box-shadow:
+    inset 0 -2px 3px rgba(49, 51, 51, 0.6), /* ظل داخلي أزرق داكن على الجوانب السفلية */
+    inset 0px -2px 3px rgba(0, 255, 221, 0.6), /* ظل داخلي أزرق داكن على الجوانب الأفقية */
+    0 0 5px rgba(0, 255, 221, 0.6); /* ظل خارجي سماوي عند التأشير */
+}
+
+
+/* سهم خانة تغيير العملات */
+.dropdown-arrow {
+  position: absolute; /* ضع السهم بشكل مطلق داخل الحاوية */
+  right: 0.1px; /* التحكم بموقع السهم من الجهة اليمنى */
+  top: 52%; /* محاذاة السهم في منتصف الخانة عموديًا */
+  transform: translateY(-50%); /* اجعل السهم في منتصف الخانة بشكل دقيق */
+  font-size: 35px; /* تحديد حجم الخط للسهم */
+  color: #000000; /* اللون الافتراضي للسهم */
+  transition: color 0.3s ease; /* تأثير الانتقال لتغيير اللون */
+}
+
+/* التأثير عند تمرير المؤشر على الخانة */
+.currency-selector:hover .dropdown-arrow {
+  color: #00ffd5; /* تغيير اللون إلى الأزرق السماوي عند التأشير على الخانة */
+}
+
+/* القائمة المنسدلة لخانة تغيير العملة */
+.dropdown-menu {
+  display: none; /* يخفي القائمة المنسدلة افتراضيًا */
+  position: absolute; /* يحدد العنصر ليكون بوضع مطلق بالنسبة للعنصر الأب */
+  top: 100%; /* يضع القائمة مباشرة أسفل العنصر الأب */
+  left: 0; /* يضع القائمة في أقصى اليسار */
+  width: 91%; /* يجعل عرض القائمة يساوي عرض العنصر الأب */
+  background-color: white; /* يحدد لون الخلفية ليكون أبيض */
+  border: 1px solid #7c7c7c; /* يحدد حافة العنصر بلون رمادي فاتح وبعرض 1 بكسل */
+  border-radius: 5px; /* يجعل زوايا القائمة مستديرة بمقدار 5 بكسل */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* يضيف ظلًا خفيفًا أسفل العنصر لإبراز القائمة */
+  margin-top: 0px; /* يضيف مسافة بمقدار 5 بكسل بين العنصر والقائمة */
+  z-index: 1000; /* يضمن أن القائمة ستكون فوق العناصر الأخرى */
+  list-style: none; /* يزيل النقط أو الأرقام من قائمة العناصر */
+  padding: 0; /* يزيل الحشو الداخلي من قائمة العناصر */
+}
+
+.dropdown-menu li {
+  display: flex; /* يعرض العناصر بداخل كل عنصر قائمة باستخدام Flexbox */
+  align-items: center; /* يضبط محاذاة العناصر الداخلية بشكل مركزي عموديًا */
+  padding: 5px 10px; /* يحدد مسافة الحشو الداخلية بـ 5 بكسل للأعلى والأسفل و10 بكسل لليمين واليسار */
+  cursor: pointer; /* يغير مؤشر الفأرة إلى شكل اليد عند التحويم على العنصر */
+  font-size: 14px; /* يحدد حجم الخط ليكون 14 بكسل */
+}
+
+.dropdown-menu li:hover {
+  background-color: #99aaff; /* يغير لون خلفية العنصر عند التحويم عليه إلى أزرق فاتح */
+}
+
+
+
+
+/*/////////////////-- خانة تغيير لغة الموقع --///////////////*/
+
+
+.language-selector {
+  position: relative;
+  display: flex; /* عرض العناصر في نفس السطر */
+  align-items: center; /* محاذاة العناصر بشكل مركزي عموديًا */
+  border-radius: 20px; /* جعل الزوايا مستديرة */
+  padding: 7px 18px; /* مسافة داخلية من الأعلى والأسفل ومن اليمين واليسار */
+  background-color: #ffffff; /* لون خلفية فاتح */
+  cursor: pointer; /* تغيير المؤشر عند التمرير */
+  transition: background-color 0.3s, color 0.3s; /* تأثير الانتقال */
+  box-shadow: inset 0px -2px 3px rgba(0, 0, 0, 0.9); /* ظل داخلي باللون الأسود */
+
+  /* التحكم في المسافات من جميع الاتجاهات */
+  margin-top: 0px; /* المسافة من الأعلى */
+  margin-bottom: 103px; /* المسافة من الأسفل */
+  margin-left: 2px; /* المسافة من اليسار */
+  margin-right: 1px; /* المسافة من اليمين */
+}
+
+/*/////////////////-- التحكم في حجم صورة العالم لكلا الخانتين --///////////////*/
+
+
+/* تنسيق العلم لخانة اللغة */
+.language-selector .flag {
+  width: 20px; /* عرض العلم */
+  height: auto; /* الحفاظ على نسبة العرض إلى الارتفاع */
+  margin-right: 6px; /* مسافة بين العلم والنص */
+  vertical-align: middle; /* ضبط العلم على نفس ارتفاع النص */
+  border-radius: 3px; /* إضافة حواف دائرية صغيرة */
+  position: relative; /* تمكين التحكم في التحريك */
+  top: 0; /* التحكم في التحريك لأعلى/أسفل */
+  left: 0; /* التحكم في التحريك لليمين/اليسار */
+  transition: all 0.3s ease; /* تأثير حركة سلس */
+}
+
+/* تنسيق العلم لخانة تغيير العملة */
+.currency-selector .flag {
+  width: 20px; /* عرض العلم */
+  height: auto; /* الحفاظ على نسبة العرض إلى الارتفاع */
+  margin-right: 0px; /* مسافة بين العلم والنص */
+  vertical-align: middle; /* ضبط العلم على نفس ارتفاع النص */
+  border-radius: 3px; /* إضافة حواف دائرية صغيرة */
+  position: relative; /* تمكين التحكم في التحريك */
+  top: 0; /* التحكم في التحريك لأعلى/أسفل */
+  left: 0; /* التحكم في التحريك لليمين/اليسار */
+  transition: all 0.3s ease; /* تأثير حركة سلس */
+}
+
+/* تحريك العلم في قائمة العملات المنسدلة */
+.currency-selector .dropdown-menu .flag {
+  width: 20px; /* حجم أصغر للأعلام في القائمة المنسدلة */
+  height: auto; /* الحفاظ على نسبة العرض إلى الارتفاع */
+  margin-right: 6px; /* مسافة بين العلم والنص */
+  vertical-align: middle; /* ضبط العلم على نفس ارتفاع النص */
+  border-radius: 3px; /* إضافة حواف دائرية صغيرة */
+  position: relative; /* تمكين التحكم في التحريك */
+  top: 0; /* التحكم في التحريك لأعلى/أسفل */
+  left: 0; /* التحكم في التحريك لليمين/اليسار */
+  transition: all 0.3s ease; /* تأثير حركة سلس */
+}
+
+/* تحسين تنسيق النص بجانب العلم لخانة اللغة */
+.language-selector .language {
+  font-size: 14px; /* حجم الخط للنص */
+  color: #333; /* لون النص */
+  vertical-align: middle; /* محاذاة النص مع العلم */
+}
+
+/* تحسين تنسيق النص بجانب العلم لخانة العملة */
+.currency-selector .currency {
+  font-size: 14px; /* حجم الخط للنص */
+  color: #333; /* لون النص */
+  vertical-align: middle; /* محاذاة النص مع العلم */
+}
+
+/* تحسين تنسيق القائمة المنسدلة */
+.currency-selector .dropdown-menu li {
+  padding: 5px 18px; /* إضافة مسافة داخل العناصر */
+  font-size: 14px; /* حجم الخط للنص داخل القائمة */
+}
+
+
+
+/*/////////////////-- تغيير حجم خط خانة اللغة --///////////////*/
+
+.language {
+  font-size: 18px; /* حجم الخط */
+  color: #000; /* لون النص */
+  transition: color 0.3s; /* تأثير الانتقال عند تغيير اللون */
+}
+
+
+/*////////////////// ايقونة تسجيل الحساب///////////////////*/
+
+.account-icon {
+  position: absolute; /* تحديد الموقع بشكل مطلق */
+  top: 9px; /* المسافة من الأعلى */
+  right: 1504px; /* المسافة من اليمين */
+  width: 32px; /* عرض الحاوية */
+  height: 32px; /* ارتفاع الحاوية */
+  border-radius: 50%; /* جعل الحواف مستديرة بالكامل */
+  background-color: #ffffff; /* لون خلفية الأيقونة */
+  cursor: pointer; /* تغيير المؤشر عند التمرير */
+  transition: background-color 0.3s; /* تأثير الانتقال */
+  box-shadow: inset 0px -2px 3px rgba(0, 0, 0, 0.9); /* ظل داخلي باللون الأسود */
+
+}
+
+.account-icon i {
+  position: absolute; /* تحديد الموقع بشكل مطلق */
+  top: 5px; /* المسافة من الأعلى */
+  left: 8px; /* المسافة من اليمين */
+  width: 0px; /* عرض الحاوية */
+  height: 0px; /* ارتفاع الحاوية */
+  font-size: 18px; /* حجم الأيقونة */
+  color: #000000; /* لون الأيقونة */
+}
+
+/*//////////////////-- لون الاحمر لخانة تغيير اللغة عند التأشير --//////////////////*/
+
+.language-selector:hover .language {
+  color: rgb(255, 0, 0); /* تغيير لون النص إلى الأحمر عند التأشير */
+}
+
+
+/*///////////// الاعمدة //////////////*/
+
+/* العمود الفاصل الأول */
+.separator-left {
+  width: 1px; /* عرض العمود الفاصل */
+  height: 24px; /* طول العمود الفاصل */
+  background-color: #c9c7c7; /* لون العمود الفاصل */
+  position: relative; /* يسمح بتحريك العمود */
+  top: -50px; /* حرك العمود للأعلى */
+  margin: 0 10px; /* مسافة خارجية بين العمود والعناصر المجاورة */
+}
+
+/* العمود الفاصل الأوسط */
+.separator-middle {
+  width: 1px; /* عرض العمود الفاصل */
+  height: 24px; /* طول العمود الفاصل */
+  background-color: #c9c7c7; /* لون مختلف للعمود الفاصل */
+  position: relative;
+  top: -50px; /* تحريك مختلف للأعلى */
+  margin: 0 10px;
+}
+
+/* العمود الفاصل الأخير */
+.separator-right {
+  width: 1px; /* عرض العمود الفاصل */
+  height: 24px; /* طول العمود الفاصل */
+  background-color: #c9c7c7; /* لون العمود */
+  position: relative; /* لتثبيت العمود في مكانه حتى عند التمرير */
+  top: 1px; /* تحديد المسافة من الأعلى */
+  margin: 0 10px;
+}
+
+/*//////////////////-- صورة خلفية الموقع --//////////////////////*/
+
+body {
+  background-image: url('img/background-set/background.jpg'); /* مسار الصورة */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+}
+
+
+.contact-icons {
+  position: fixed;
+  bottom: 22px; /* المسافة من أسفل الصفحة */
+  left: 20px; /* المسافة من يسار الصفحة */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1000; /* لضمان ظهور الأيقونات فوق المحتوى الآخر */
+}
+
+.contact-icons a {
+  margin-bottom: 1px; /* المسافة بين الأيقونات */
+}
+
+.contact-icons img {
+  width: 60px; /* حجم الأيقونة */
+  height: 60px; /* حجم الأيقونة */
+  border-radius: 50%; /* لجعل الأيقونات دائرية */
+  transition: transform 0.3s;
+}
+
+.contact-icons a:hover img {
+  transform: scale(1.1); /* تكبير الأيقونة عند تمرير الفأرة */
+}
+
+
+
